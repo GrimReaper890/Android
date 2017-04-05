@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:orientation="vertical">
-<!--this is the first part of the screen
-containting title mesage and FB Button-->
+    >
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
-        <!--Title of the app-->
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SignIn"
-            android:textColor="#FFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
-            />
-        <!--welcome message-->
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="\t\t\t\tWelcome back \n sign in your YO App account"
-            android:textColor="#FFF"
-            android:textStyle="bold"
-            android:layout_marginBottom="20dp"
-            />
-        <!--Button for facebook Sigin-->
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:text="Sign in with your facebook"
-            android:textAllCaps="false"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:textColor="#FFF"
-            />
-    </LinearLayout>
-    <!--the user loginArea-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
         android:orientation="vertical"
-        android:background="#FFF"
-        android:layout_marginTop="50dp"
-        >
-        <EditText
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+        <!--this is the first part of the screen
+        containting title mesage and FB Button-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <!--Title of the app-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:text="SignIn"
+                android:textColor="#FFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <!--welcome message-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="\t\t\t\tWelcome back \n sign in your YO App account"
+                android:textColor="#FFF"
+                android:textStyle="bold" />
+            <!--Button for facebook Sigin-->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="Sign in with your facebook"
+                android:textAllCaps="false"
+                android:textColor="#FFF" />
+        </LinearLayout>
+        <!--the user loginArea-->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:hint="email"
-            />
-        <EditText
+            android:layout_marginTop="50dp"
+            android:background="#FFF"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:hint="email" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:hint="password" />
+        </LinearLayout>
+
+        <!--the login button and the message for SIgnup-->
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:hint="password"
-            />
+            android:layout_marginTop="20dp"
+            android:text="Login"
+            android:textColor="#FFF" />
+
+
     </LinearLayout>
-
-    <!--the login button and the message for SIgnup-->
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="null"
-        android:layout_marginTop="20dp"
-        android:text="Login"
-        android:textColor="#FFF" />
-
-
-</LinearLayout>
+</ScrollView>
