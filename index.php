@@ -3,7 +3,7 @@
 //  print_r($_GET["hub_challenge"]);
 echo ("me thak geya");
  file_put_contents("fb.txt",file_get_contents("php://input"));
- $fb = file_get_contents("fb.txt");
+ $fb = file_get_contents('fb.txt');
 
  $fb=json_decode($fb);
  $rid= $fb->entry[0]->messaging[0]->sender->id;
