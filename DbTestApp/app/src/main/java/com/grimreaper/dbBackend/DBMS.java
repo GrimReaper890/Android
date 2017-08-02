@@ -2,6 +2,7 @@ package com.grimreaper.dbBackend;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -46,5 +47,13 @@ public class DBMS extends SQLiteOpenHelper {
         cv.put("pADDRESS",Address);
         db.insert("reg_user_table",null,cv);
         Log.e("regNewUser=>","yes we added a new user Successfully");
+    }
+
+
+    public Cursor getAllUsers(SQLiteDatabase db){
+        String[] projections = {"pName","pFname","pPassword","pADDRESS"};
+//        SELECT * FROM reg_user_table===>db.query("reg_user_table",projections,null,null,null,null,null);
+        Cursor mCursor= db.query("reg_user_table",projections,null,null,null,null,null);
+        return  mCursor;
     }
 }
