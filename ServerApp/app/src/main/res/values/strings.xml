@@ -1,4 +1,4 @@
 <resources>
 <string name="app_name">ServerApp</string>
-<string name="get_from_server_url">http://192.168.2.106:8080/voley/testfile.php</string>
+<string name="get_from_server_url">http://192.168.2.112:8080/voley/dbconnect.php</string>
 </resources>
