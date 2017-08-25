@@ -27,7 +27,8 @@ LinearLayout linLayFragmentContainer;
     public void LoadFirstFragment(View v) {
         FragmentManager fragManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragManager.beginTransaction();
-        fragmentTransaction.add(R.id.frag_basic_container,mFirstFragment);
+        fragmentTransaction.replace(R.id.frag_basic_container,mFirstFragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
     }
@@ -36,6 +37,7 @@ LinearLayout linLayFragmentContainer;
         FragmentManager fragManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragManager.beginTransaction();
         fragmentTransaction.replace(R.id.frag_basic_container,mSecondFragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 }

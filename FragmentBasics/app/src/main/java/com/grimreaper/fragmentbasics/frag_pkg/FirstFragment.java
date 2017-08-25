@@ -2,10 +2,14 @@ package com.grimreaper.fragmentbasics.frag_pkg;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.grimreaper.fragmentbasics.R;
 
@@ -61,6 +65,21 @@ public class FirstFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_first, container, false);
+
+//        View v = inflater.inflate(R.layout.fragment_first, container, false);
+//        btnTest = (Button) v.findViewById(R.id.btn_test_first);
+//        return v;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Button btnFragTest = (Button) getActivity().findViewById(R.id.btn_test_first);
+        btnFragTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Yup fragmnet wala", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }
