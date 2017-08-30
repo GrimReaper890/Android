@@ -1,5 +1,6 @@
 package com.grimreaper.addandsessionapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,13 +12,15 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class MainActivity extends AppCompatActivity {
-Button btnShowAdz;
+    Button btnShowAdz;
     AdRequest mAdRequest;
-InterstitialAd minterstitialAd;
+    InterstitialAd minterstitialAd;
+    //bring that session manager instance here
+    SessionManger mSessionManger;
 
+    EditText edtTxtEmail, edtTxtPass;
+    String incomingEmail, incomingPass;
 
-    EditText edtTxtEmail,edtTxtPass;
-    String incomingEmail,incomingPass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +29,15 @@ InterstitialAd minterstitialAd;
         edtTxtEmail = (EditText) findViewById(R.id.edt_txt_email);
         edtTxtPass = (EditText) findViewById(R.id.edt_txt_pass);
 
+//instantiate that session instant always in oNCREATE LIKE THIS
+        mSessionManger = new SessionManger(MainActivity.this);
+
 
         minterstitialAd = new InterstitialAd(MainActivity.this);
 
         minterstitialAd.setAdUnitId(getApplicationContext().getResources().getString(R.string.add_unit_id));
 
-         mAdRequest = new AdRequest.Builder().build();
+        mAdRequest = new AdRequest.Builder().build();
 
         minterstitialAd.loadAd(mAdRequest);
 
@@ -41,22 +47,32 @@ InterstitialAd minterstitialAd;
 //        }
 
 
-
-
         btnShowAdz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              if(minterstitialAd.isLoaded()){
-                  minterstitialAd.show();
-              }else{
-                  Toast.makeText(MainActivity.this, "add will be loaded in a sec", Toast.LENGTH_SHORT).show();
-                  minterstitialAd.loadAd(mAdRequest);
-              }
+//              if(minterstitialAd.isLoaded()){
+//                  minterstitialAd.show();
+//              }else{
+//                  Toast.makeText(MainActivity.this, "add will be loaded in a sec", Toast.LENGTH_SHORT).show();
+//                  minterstitialAd.loadAd(mAdRequest);
+//              }
 
-              incomingEmail=edtTxtEmail.getText().toString();
-              incomingPass=edtTxtPass.getText().toString();
+                incomingEmail = edtTxtEmail.getText().toString();
+                incomingPass = edtTxtPass.getText().toString();
 
+                //this will write the user's email in the editor of prefManager
+                mSessionManger.logNewuser(true,incomingEmail);
 
+                boolean incominguserType = mSessionManger.checkUserLogin();
+//                String.valueOf(incominguserType); <===>  ""+incominguserType
+                Toast.makeText(MainActivity.this,""+incominguserType , Toast.LENGTH_SHORT).show();
+
+//                get the registered value in the session manager
+                String registeredEmail = mSessionManger.checkUserLoggedEmail();
+                Toast.makeText(MainActivity.this, registeredEmail, Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(MainActivity.this,SecondActivity.class));
+                finish();
             }
         });
     }
@@ -64,7 +80,7 @@ InterstitialAd minterstitialAd;
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if(minterstitialAd.isLoaded()){
+        if (minterstitialAd.isLoaded()) {
             minterstitialAd.show();
         }
     }

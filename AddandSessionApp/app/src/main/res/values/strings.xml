@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">AddandSessionApp</string>
     <string name="add_unit_id">ca-app-pub-3699122147710279/3410252620</string>
+    <string name="title_activity_second">SecondActivity</string>
 </resources>
