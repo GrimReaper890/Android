@@ -12,7 +12,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnShowAdz;
+    Button btnShowAdz, btnTestPref;
     AdRequest mAdRequest;
     InterstitialAd minterstitialAd;
     //bring that session manager instance here
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btnShowAdz = (Button) findViewById(R.id.btn_show_adz);
+        btnTestPref = (Button) findViewById(R.id.btn_test_pref);
         edtTxtEmail = (EditText) findViewById(R.id.edt_txt_email);
         edtTxtPass = (EditText) findViewById(R.id.edt_txt_pass);
 
@@ -59,20 +60,34 @@ public class MainActivity extends AppCompatActivity {
 
                 incomingEmail = edtTxtEmail.getText().toString();
                 incomingPass = edtTxtPass.getText().toString();
+                if (incomingEmail.isEmpty() || incomingPass.isEmpty()) {
+                    edtTxtEmail.setError("fill the form");
+                    edtTxtPass.setError("fill the form");
 
-                //this will write the user's email in the editor of prefManager
-                mSessionManger.logNewuser(true,incomingEmail);
+                } else {
+                    //this will write the user's email in the editor of prefManager
+                    mSessionManger.logNewuser(true, incomingEmail);
 
+
+                    startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                    finish();
+                }
+
+            }
+        });
+
+
+        btnTestPref.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 boolean incominguserType = mSessionManger.checkUserLogin();
 //                String.valueOf(incominguserType); <===>  ""+incominguserType
-                Toast.makeText(MainActivity.this,""+incominguserType , Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "" + incominguserType, Toast.LENGTH_SHORT).show();
 
 //                get the registered value in the session manager
                 String registeredEmail = mSessionManger.checkUserLoggedEmail();
                 Toast.makeText(MainActivity.this, registeredEmail, Toast.LENGTH_SHORT).show();
 
-                startActivity(new Intent(MainActivity.this,SecondActivity.class));
-                finish();
             }
         });
     }

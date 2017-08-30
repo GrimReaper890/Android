@@ -28,8 +28,15 @@ public class SecondActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                boolean incominguserType = mSessionManger.checkUserLogin();
+//                String.valueOf(incominguserType); <===>  ""+incominguserType
+                Toast.makeText(SecondActivity.this, "" + incominguserType, Toast.LENGTH_SHORT).show();
+
+//                get the registered value in the session manager
+                String registeredEmail = mSessionManger.checkUserLoggedEmail();
+                Toast.makeText(SecondActivity.this, registeredEmail, Toast.LENGTH_SHORT).show();
             }
         });
     }

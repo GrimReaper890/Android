@@ -33,6 +33,11 @@
         android:text="show Adz"
         android:layout_gravity="center_horizontal"/>
 
+    <Button
+        android:id="@+id/btn_test_pref"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="btn check pref" />
 
 
 </LinearLayout>
